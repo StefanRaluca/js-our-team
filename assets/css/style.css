@@ -1,0 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #e5dfdf7d;
+}
+.text_color{
+    color: rgb(157 152 152);
+}
