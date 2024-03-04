@@ -122,7 +122,7 @@ for (let i = 0; i < team.length; i++) {
     const member = team[i];
     //creiamo un div principale dove mettiamo ogni membro 
     const memberContainer = document.createElement('div')
-    memberContainer.classList.add('col-lg-4', 'mb-4');
+    memberContainer.classList.add('col-lg-4', 'mb-4', 'col-md-6');
     // Creiamo un div interno per il contenuto del membro
     const memberCard = document.createElement('div');
     memberCard.classList.add('card', 'text-center', 'shadow', 'text_color');
