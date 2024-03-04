@@ -42,7 +42,10 @@ for (let i = 0; i < team.length; i++) {
     const member = team[i];
     //usiamo il operatore di concatenare per le stringhe e le variabili
     console.log("Name: " + member.name + ", Ruolo: " + member.role + ", Foto: " + member.image);
-
+    /*    console.log(member.name);
+       console.log(member.role);
+       console.log(member.image);   
+    */
 }
 
 
@@ -79,7 +82,7 @@ teamContainer.appendChild(memberContainer);
 }
 
  */
-//BONUS 1:
+//BONUS 1 e BONUS 2
 //trasformare la stringa foto in una immagine effettiva
 //riprendo tutto il ciclo e la DOM creata sopra 
 
@@ -101,18 +104,28 @@ titleOfPage.querySelector('p').style.whiteSpace = 'pre-wrap';
 titleOfPage.classList.add('text_color')
 
 //style per h3 
-titleOfPage.querySelector('h3').style.padding='1rem'
-titleOfPage.querySelector('h3').style.color='grey'
+titleOfPage.querySelector('h3').style.padding = '1rem'
+titleOfPage.querySelector('h3').style.color = 'grey'
 
 //aggiungiamo al DOM il title e usiamo beforbegin per essere certi che sarà sopra le card
 teamContainer.insertAdjacentElement('beforebegin', titleOfPage)
+
+// Creiamo un div principale per i membri del team
+const rowContainer = document.createElement('div');
+rowContainer.classList.add('row', 'p-4');
+
+// Aggiungiamo il div principale al teamContainer
+teamContainer.appendChild(rowContainer);
 
 //riusiamo il ciclo for per ciclare dentro il array
 for (let i = 0; i < team.length; i++) {
     const member = team[i];
     //creiamo un div principale dove mettiamo ogni membro 
     const memberContainer = document.createElement('div')
-    memberContainer.classList.add('card', 'm-3', 'text-center', 'shadow' , 'text_color');
+    memberContainer.classList.add('col-lg-4', 'mb-4');
+    // Creiamo un div interno per il contenuto del membro
+    const memberCard = document.createElement('div');
+    memberCard.classList.add('card', 'text-center', 'shadow', 'text_color');
     //creiamo un paragrafo per il nome del membro
     const nameMember = document.createElement('h4')
     nameMember.innerHTML = member.name
@@ -121,25 +134,25 @@ for (let i = 0; i < team.length; i++) {
     const ruoloMember = document.createElement('p')
     ruoloMember.innerHTML = member.role
     console.log(ruoloMember);
-    //creiamo una const per inserire img per ora come p 
+
     // Creazione dell'elemento immagine
     const imgMember = document.createElement('img');
 
     //il percorso della img 
     imgMember.src = './assets/img/' + member.image;
-    // appendiamo img al contenitore del membro
-    memberContainer.appendChild(imgMember);
+   
 
-
+ // appendiamo img al contenitore del membro
+    memberCard.appendChild(imgMember);
     // appendiamo al container il nome del member
-    memberContainer.appendChild(nameMember);
-    // appendiamo anche il ruolo 
-    memberContainer.appendChild(ruoloMember);
-    /* //appendiamo anche img
-    
-    memberContainer.appendChild(imgMember); */
-
-    // appendiamo al team container il container member
-    teamContainer.appendChild(memberContainer);
-
+    memberCard.appendChild(nameMember);
+        // appendiamo anche il ruolo 
+    memberCard.appendChild(ruoloMember);
+// appendiamo il memberCard al container dei membri
+ 
+ memberContainer.appendChild(memberCard);
+ //appendiamo il container dei membri alla row
+ rowContainer.appendChild(memberContainer);
+ //appendiamo la row alla container principale
+    teamContainer.appendChild(rowContainer);
 }
