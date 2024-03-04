@@ -44,6 +44,38 @@ const team = [
     console.log("Name: " + member.name + ", Ruolo: " + member.role + ", Foto: " + member.image);
 
   }
-   
+ 
+  
+ //stampare le stesse informazioni su DOM sottoforma di stringhe 
+// creaio una const per prendere il elemento dalla dom creato 
+const teamContainer = document.getElementById('container_team');
+//riusiamo il ciclo for per ciclare dentro il array
+for (let i = 0; i < team.length; i++) {
+    const member = team[i];
+//creiamo un div principale dove mettiamo ogni membro 
+const memberContainer=document.createElement('div')
+//creiamo un paragrafo per il nome del membro
+const nameMember = document.createElement('p')
+nameMember.innerHTML= "Name: " + member.name 
+console.log(nameMember); 
+//creiamo un altro paragrafo per il ruolo del membro
+const ruoloMember = document.createElement('p')
+ruoloMember.innerHTML= " Ruolo: " + member.role 
+console.log(ruoloMember);
+//creiamo una const per inserire img per ora come p 
+const imgMember= document.createElement('p')
+imgMember.innerHTML=" Foto: " + member.image
+console.log(imgMember);
+// appendiamo al container il nome del member
+memberContainer.appendChild(nameMember);
+// appendiamo anche il ruolo 
+memberContainer.appendChild(ruoloMember);
+//appendiamo anche img
+memberContainer.appendChild(imgMember);
+
+// appendiamo al team container il container member
+teamContainer.appendChild(memberContainer);
+
+}
 
   
